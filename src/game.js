@@ -53,7 +53,7 @@ class Game {
 
       this.player.draw()
 
-      this.projectiles.forEach ((projectile) =>{
+    his.projectiles.forEach ((projectile) =>{
         projectile.update()
       
     })
@@ -61,7 +61,6 @@ class Game {
     this.player.draw()
 
     this.projectiles.forEach ((projectile) =>{
-    
         projectile.draw()
     })
 
