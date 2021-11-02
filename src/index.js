@@ -20,6 +20,7 @@
       const buildGameScreen = () => {
         buildDom(`
             <div id="game-board">
+            <div class="score"> <h1>Score: </h1><span>0</span></div> 
                 <canvas id="canvas" width="800" height="500"></canvas>
             </div>  
             <button id="end-button">End Game</button>
