@@ -1,49 +1,86 @@
 //CREATE PLAYER
 class Player{
-    constructor(canvas, color) {
+    constructor(canvas, ctx) {
         this.canvas = canvas
-        this.ctx = this.canvas.getContext("2d");
-        this.x = this.canvas.width / 2;
-        this.y = this.canvas.height / 2;
-        this.size = 50;
-        this.color = color
-        this.dy = 5
-        this.dx = 5
- 
+        this.ctx = ctx
+        this.x = this.canvas.width / 2
+        this.y = this.canvas.height / 2
+        this.size = 30;
+        this.vx= 0;
+        this.vy= 0;
+        this.ax= 0; 
+        this.ay= 0;
+        this.friction = 0.95
+        this.r = 0;
+        this.acceleration = 0.2
     }
 
-    draw(){
-
+    draw(){        
+        this.ctx.save();
+        this.ctx.translate(this.x, this.y);
+        this.ctx.rotate(this.r);
         this.ctx.fillStyle = "#ffffff";
-        this.ctx.fillRect(this.x, this.y, this.size, this.size);
-     
+        this.ctx.fillRect( -this.size/2, -this.size/2, this.size, this.size); 
+        this.ctx.restore();
+    }
+  
+    update(){
         
+        //update velocity
+        this.vx += this.ax;
+        this.vy += this.ay;
+      
+        //cheat's friction (friction = 0.97)
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+    
+        //update position
+        this.x += this.vx;
+        this.y += this.vy;
+   
+    }
+
+    setSpeed(acceleration){
+       
+        switch(acceleration){
+           
+            case "up":
+                if(this.acceleration < 1){
+                this.ax = Math.cos(this.r) * this.acceleration;
+                this.ay = Math.sin(this.r) * this.acceleration;
+                }
+            case "down":
+                this.acceleration -= 0.01
+                //this.ay -= 0.01
+        }
+
+    }
+    resetSpeed(){
+       
+      this.ax  =0
+      this.ay =0
+       
         
+
     }
     setDirection(direction){
         switch (direction) {
-            case "up":  /* Up arrow was pressed */
-            this.y -= this.dy;
-            
-            break;
-            case "down":  /* Down arrow was pressed */
-           
-            this.y += this.dy;
-            
-            break;
             case "left":  /* Left arrow was pressed */
          
-            this.x -= this.dx;
+            this.r -= 0.2;
             
             break;
             case "right":  /* Right arrow was pressed */
            
-            this.x += this.dx;
+            this.r += 0.2;
             
             break;
             }
     }
+
+    
 }
 
+   
 
 

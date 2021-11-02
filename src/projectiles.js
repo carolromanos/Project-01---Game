@@ -1,7 +1,7 @@
 //PLAYER PROJECTILES
 class Projectile {
     constructor(ctx,x, y, radius, color, speed) {
-        this.ctx = ctx 
+        this.ctx = ctx
         this.x = x
         this.y = y
         this.radius = radius
@@ -19,5 +19,7 @@ class Projectile {
         this.x = this.x + this.speed.x
         this.y = this.y + this.speed.y
     }
+} 
 
-}
+
+  
