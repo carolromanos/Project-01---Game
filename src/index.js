@@ -10,7 +10,13 @@
             buildDom(`
               <h1 class = "neon-text-1">Enraged Square</h1>
               <br />
-              <button id="start-button">StartGame</button>
+              <button id="start-button">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Start Game
+              </button>
             `);
             const startButton = document.getElementById("start-button");
             startButton.addEventListener("click", buildGameScreen);
@@ -19,12 +25,13 @@
     // Second Screen => Game Screen
       const buildGameScreen = () => {
         buildDom(`
+          <div clas= "outer">
             <div id="game-board">
-              <div class="score">
-                <p>
+              <div class="score-live">
+                
                   <span class"score">Score: </span>
                   <span class="counter">0</span>
-                </p>
+                
                 
               </div> 
               <div class="lives-screen">
@@ -35,6 +42,7 @@
             </div> 
 
             <canvas id="canvas" width="800" height="500"></canvas>
+            </div>
            
         `);
     

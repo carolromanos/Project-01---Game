@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&family=PT+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 body{
     margin: 0;
@@ -13,80 +14,151 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 2px solid red;
+
 }
+
+.outer{
+    border-color: 2px solid red;
+}
+
 canvas{
     border: 3px solid white;
-    border-radius: 8px;
-    margin-top: 50px;
+    border-radius: 4px;
+    margin-top: 10px;
+    
+}
+
+#game-board{
+
+    margin-top: 60px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 
 }
 
-.score{
+.score-live{
     color: white;
+    font-family: 'Roboto';
+    font-size: 2em;
+
 }
 
 .live{
+    margin-bottom: -4px;
     width: 30px;
     height: 30px;
+    padding-left: 5px;
 }
 .neon-text-1{
-    margin-top: 220px;
-    font-family: 'Monoton';
-    font-size: 4em;
-    color: rgb(141, 32, 32);
-/*     text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px rgb(180, 41, 41),
-    0 0 82px rgb(180, 41, 41),
-    0 0 92px rgb(180, 41, 41),
-    0 0 102px rgb(180, 41, 41),
-    0 0 151px rgb(180, 41, 41); */
-
-    animation: pulsate 1.5s infinite alternate;  
-    border: 0.2rem solid #fff;
-    border-radius: 1rem;
-    padding: 1em;
-    box-shadow: 0 0 .2rem #fff,
-              0 0 .2rem #fff,
-              0 0 2rem rgb(141, 32, 32),
-              0 0 0.8rem rgb(141, 32, 32),
-              0 0 2.8rem rgb(141, 32, 32),
-              inset 0 0 1.3rem rgb(141, 32, 32) 
-
-}
-
-#start-button{
-    display: block;
-
-}
-
-.neon-text-2{
     margin-top: 100px;
     font-family: 'Monoton';
     font-size: 4em;
-    color: rgb(141, 32, 32);
-/*     text-shadow:
+    color: rgb(156, 55, 55);
+/*  text-shadow:
     0 0 7px #fff,
     0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px rgb(180, 41, 41),
+    0 0 21px #fff; */
+/*     0 0 42px rgb(180, 41, 41),
     0 0 82px rgb(180, 41, 41),
     0 0 92px rgb(180, 41, 41),
     0 0 102px rgb(180, 41, 41),
-    0 0 151px rgb(180, 41, 41); */
+    0 0 151px rgb(180, 41, 41);  */
 
     border: 0.2rem solid #fff;
     border-radius: 1rem;
     padding: 1em;
     box-shadow: 0 0 .2rem #fff,
               0 0 .2rem #fff,
-              0 0 2rem rgb(141, 32, 32),
-              0 0 0.8rem rgb(141, 32, 32),
-              0 0 2.8rem rgb(141, 32, 32),
-              inset 0 0 1.3rem rgb(141, 32, 32) 
+              0 0 2rem #fff,
+              0 0 0.8rem #fff,
+              0 0 2.8rem #fff,
+              inset 0 0 1.3rem #fff 
+ 
 
+}
+
+#start-button{ 
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;  
+    margin-top: 70px;
+    padding: 15px 30px; 
+    overflow: hidden; 
+    transition: 0.2s all;  
+    color: white;
+    background-color: black; 
+    text-transform: uppercase; 
+    letter-spacing: 4px;
+    border-radius: 5px;
+    border-color: transparent;
+}
+#start-button:hover{
+    background:white; 
+    color: black;
+    box-shadow: 0px 0px 10px white, 0px 0px 40px white, 0px 0px 80px white; 
+    transition-delay: 1s;
+}    
+#start-button span{
+    position: absolute;
+    display: block;
+}
+#start-button span:nth-child(1){
+    top:0px;
+    left:-100%;
+    width: 100%;
+    height: 2px; 
+    background: linear-gradient(90deg,transparent,white)
+}
+ 
+#start-button:hover span:nth-child(1){
+    left:100%; 
+    transition: 0.5s; 
+}
+#start-button span:nth-child(3){
+    bottom:0px;
+    right:-100%;
+    width: 100%;
+    height: 2px; 
+    background: linear-gradient(270deg,transparent, white)
+}
+ 
+#start-button:hover span:nth-child(3){
+    right:100%; 
+    transition: 0.5s; 
+    transition-delay: 0.5s;
+}
+#start-buttonspan:nth-child(2){
+    top:-100%;
+    right:0;
+    width:  2px;
+    height: 100%; 
+    background: linear-gradient(180deg,transparent,white)
+}
+ 
+#start-button:hover span:nth-child(2){
+    top:100%; 
+    transition: 0.5s; 
+    transition-delay: 0.25s;
+}
+#start-button span:nth-child(4){
+    bottom:-100%;
+    left:0;
+    width:  2px;
+    height: 100%; 
+    background: linear-gradient(360deg,transparent,white )
+}
+ 
+#start-button:hover span:nth-child(4){
+    bottom:100%; 
+    transition: 0.5s;  
+    transition-delay: 0.75s;
 }
 
 .game-over{
@@ -94,6 +166,33 @@ canvas{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.neon-text-2{
+    margin-top: 100px;
+    font-family: 'Monoton';
+    font-size: 4em;
+    color: rgb(156, 55, 55);
+/*     text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(180, 41, 41),
+    0 0 82px rgb(180, 41, 41),
+    0 0 92px rgb(180, 41, 41),
+    0 0 102px rgb(180, 41, 41),
+    0 0 151px rgb(180, 41, 41); */
+
+    border: 0.2rem solid #fff;
+    border-radius: 1rem;
+    padding: 1em;
+    box-shadow: 0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 2rem rgb(141, 32, 32),
+              0 0 0.8rem rgb(141, 32, 32),
+              0 0 2.8rem rgb(141, 32, 32),
+              inset 0 0 1.3rem rgb(141, 32, 32)  
+
 }
 
 #results{

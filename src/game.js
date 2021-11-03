@@ -17,14 +17,6 @@ class Game {
     this.lives = 3;
   }
 
-  removeLives(){
-       // remove each live element
-       const parent = document.querySelector('.lives-screen');
-       console.log(parent)
-       const firstChild = document.querySelectorAll(".live")
-      
-       parent.removeChild(firstChild[0])
-  }
 
   start() {
     // Append canvas to the DOM, create a Player and start the Canvas loop
@@ -64,7 +56,6 @@ class Game {
             x: Math.cos(angle)*5,
             y: Math.sin(angle)*5
         }
-
     
         this.projectiles.push(new Projectile (
             this.ctx,
@@ -98,7 +89,7 @@ class Game {
         }
         this.enemies.push(new Enemy(this.ctx, x, y, radius, color, speed))
        
-    }, 1000)
+    }, 900)
 
 
     this.startLoop();
@@ -106,6 +97,14 @@ class Game {
    
   }
 
+  removeLives(){
+    // remove each live element
+    const parent = document.querySelector('.lives-screen');
+    console.log(parent)
+    const firstChild = document.querySelectorAll(".live")
+   
+    parent.removeChild(firstChild[0])
+}
 
 
   startLoop() {
@@ -179,7 +178,7 @@ class Game {
 
 
             } else{
-                this.gameIsOver = true
+                //this.gameIsOver = true
             }
             
             //Game over when players runs out of lives
