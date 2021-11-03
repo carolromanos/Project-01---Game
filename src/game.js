@@ -1,7 +1,7 @@
 "use strict";
 
 const myStorage = window.localStorage;
-console.log(myStorage)
+
 
 class Game {
   constructor() {
@@ -17,7 +17,14 @@ class Game {
     this.lives = 3;
   }
 
-  
+  removeLives(){
+       // remove each live element
+       const parent = document.querySelector('.lives-screen');
+       console.log(parent)
+       const firstChild = document.querySelectorAll(".live")
+      
+       parent.removeChild(firstChild[0])
+  }
 
   start() {
     // Append canvas to the DOM, create a Player and start the Canvas loop
@@ -49,7 +56,7 @@ class Game {
 
     
     // SHOOTING PROJECTILES
-    document.body.addEventListener("click", (event) =>{
+    this.canvas.addEventListener("click", (event) =>{
    
         const angle = Math.atan2(event.clientY - this.player.y-this.canvas_y, event.clientX - this.player.x-this.canvas_x)
        
@@ -86,12 +93,13 @@ class Game {
         const color = `hsl(${Math.random()* 360}, 50%, 50%)`
         const angle = Math.atan2(this.canvas.height / 2 - y, this.canvas.width / 2 - x)
         const speed = {
-            x: Math.cos(angle)*1.5,
-            y: Math.sin(angle)*1.5
+            x: Math.cos(angle)*2,
+            y: Math.sin(angle)*2
         }
         this.enemies.push(new Enemy(this.ctx, x, y, radius, color, speed))
        
     }, 1000)
+
 
     this.startLoop();
 
@@ -105,28 +113,27 @@ class Game {
 
     //Check game over
     if(this.gameIsOver === false){
-       window.requestAnimationFrame(loop);
+       
+        window.requestAnimationFrame(loop);
 
            //Chaning Score in screen
             let scoreID = document.querySelector(".counter")
             scoreID.textContent = this.score
 
     }else if (this.gameIsOver===true){
+        
         buildGameOver()
-        //Changin high score
+        //Storing highest score and rendering it in DOM
         const highest = myStorage.getItem("score");
         const result = Math.max(highest, this.score)
         myStorage.setItem("score", String(result))
         console.log("myStorage", myStorage)
 
-        
-
-            let finalScoreID = document.querySelector(".final-score")
-            let highestScoreID = document.querySelector(".high-score")
+        let finalScoreID = document.querySelector(".final-score")
+        let highestScoreID = document.querySelector(".high-score")
     
-            highestScoreID.textContent = result;
-            finalScoreID.textContent = this.score
-
+        highestScoreID.textContent = result;
+        finalScoreID.textContent = this.score
 
     }
 
@@ -153,6 +160,9 @@ class Game {
             }
       
     })
+
+
+   
     //ENEMIES ANIMATION
     this.enemies.forEach ((enemy, enemyindex) =>{
         enemy.update()
@@ -161,12 +171,25 @@ class Game {
 
         //Check collision with player
         if(dist -enemy.radius - this.player.size < 1){
+            this.enemies.splice(enemyindex, 1)
+            
+            if(this.lives > 1){
             this.lives -=1
-            console.log(this.lives)
-            this.gameIsOver = true
+            this.removeLives()
+
+
+            } else{
+                this.gameIsOver = true
+            }
+            
+            //Game over when players runs out of lives
+            if(this.lives === 0){
+                //this.gameIsOver = true
+            }
         
         }
-    //Check Collision between enemies and prjectiles
+
+        //Check Collision between enemies and prjectiles
         this.projectiles.forEach((projectile, projectileIndex)=>{
             const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
 
@@ -199,5 +222,6 @@ class Game {
   }
 
 }
+
   
 

@@ -20,9 +20,21 @@
       const buildGameScreen = () => {
         buildDom(`
             <div id="game-board">
-            <div class="score"><p><span class"score">Score: </span><span class="counter">0</span></p></div> </div> 
-                <canvas id="canvas" width="800" height="500"></canvas>
-            </div>  
+              <div class="score">
+                <p>
+                  <span class"score">Score: </span>
+                  <span class="counter">0</span>
+                </p>
+                
+              </div> 
+              <div class="lives-screen">
+                <img class ="live" src="/images/live.png" alt="Live Icon">
+                <img class ="live" src="/images/live.png" alt="Live Icon">
+                <img class ="live" src="/images/live.png" alt="Live Icon">
+              </div>
+            </div> 
+
+            <canvas id="canvas" width="800" height="500"></canvas>
            
         `);
     
