@@ -8,7 +8,7 @@
         // First Screen => Splash Screen
         const buildSplashScreen = () => {
             buildDom(`
-              <h1>Splash Screen</h1>
+              <h1 class = "neon-text-1">Enraged Square</h1>
               <br />
               <button id="start-button">StartGame</button>
             `);
@@ -20,14 +20,14 @@
       const buildGameScreen = () => {
         buildDom(`
             <div id="game-board">
-            <div class="score"> <h1>Score: </h1><span>0</span></div> 
+            <div class="score"><p><span class"score">Score: </span><span class="counter">0</span></p></div> </div> 
                 <canvas id="canvas" width="800" height="500"></canvas>
             </div>  
-            <button id="end-button">End Game</button>
+           
         `);
     
         const endButton = document.getElementById("end-button");
-        endButton.addEventListener("click", buildGameOver);
+
     
         const game = new Game();
         game.start()
@@ -37,11 +37,15 @@
         const buildGameOver = () => {
             buildDom(`
                 <section class="game-over">
-                    <h1>Game Over</h1>
+                    <h1 class = "neon-text-2">Game Over</h1>
+                    <div><p><span id ="results" >Your Score: </span><span class="final-score">0</span></p></div> </div> 
+                    <div><p><span id ="results" >Highest Score: </span><span class="high-score">0</span></p></div> </div> 
                     <button id = "game"> TRY AGAIN</button>
                     <div class= "pointer"> </div>
                 </section>
             `);
+
+
         
             const restartButton = document.querySelector("button");
             restartButton.addEventListener("click",buildGameScreen);

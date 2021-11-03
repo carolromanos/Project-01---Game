@@ -1,4 +1,8 @@
 "use strict";
+
+const myStorage = window.localStorage;
+console.log(myStorage)
+
 class Game {
   constructor() {
     this.canvas = null;
@@ -10,7 +14,10 @@ class Game {
     this.enemies = [];
     this.gameIsOver = false;
     this.score = 0;
+    this.lives = 3;
   }
+
+  
 
   start() {
     // Append canvas to the DOM, create a Player and start the Canvas loop
@@ -19,7 +26,6 @@ class Game {
     this.ctx = this.canvas.getContext("2d") 
     this.canvas_x = this.canvas.getBoundingClientRect().left
     this.canvas_y = this.canvas.getBoundingClientRect().top
-    console.log("this.canvas.x, this.canvas.y", this.canvas_x, this.canvas_y)
     
 
     // Create a new player for the current game
@@ -28,14 +34,14 @@ class Game {
 
    //MOVING PLAYER 
     this.handleKeyDown = (event) => {
-        if (event.code === "ArrowLeft") return this.player.setDirection("left");
-        if (event.code === "ArrowRight") return this.player.setDirection("right");
-        if (event.code === "ArrowUp") return this.player.setSpeed("up");
+        if (event.code === "KeyA") return this.player.setDirection("left");
+        if (event.code === "KeyD") return this.player.setDirection("right");
+        if (event.code === "KeyW") return this.player.setSpeed("up");
 
       };
 
      this.handleKeyUp = (event) => {
-        if (event.code === "ArrowUp") return this.player.resetSpeed("stopAcc")
+        if (event.code === "KeyW") return this.player.resetSpeed("stopAcc")
       }; 
     document.body.addEventListener("keydown", this.handleKeyDown);
     document.body.addEventListener("keyup", this.handleKeyUp);
@@ -46,7 +52,7 @@ class Game {
     document.body.addEventListener("click", (event) =>{
    
         const angle = Math.atan2(event.clientY - this.player.y-this.canvas_y, event.clientX - this.player.x-this.canvas_x)
-        console.log(event.clientX, event.clientY)
+       
         const speed = {
             x: Math.cos(angle)*5,
             y: Math.sin(angle)*5
@@ -80,24 +86,50 @@ class Game {
         const color = `hsl(${Math.random()* 360}, 50%, 50%)`
         const angle = Math.atan2(this.canvas.height / 2 - y, this.canvas.width / 2 - x)
         const speed = {
-            x: Math.cos(angle),
-            y: Math.sin(angle)
+            x: Math.cos(angle)*1.5,
+            y: Math.sin(angle)*1.5
         }
         this.enemies.push(new Enemy(this.ctx, x, y, radius, color, speed))
        
-    }, 2000)
+    }, 1000)
 
     this.startLoop();
-    
+
+   
   }
+
+
 
   startLoop() {
     const loop = () => {
-        if(this.gameIsOver === false){
-        window.requestAnimationFrame(loop);
-        }else if (this.gameIsOver===true){
-            buildGameOver()
-        }
+
+    //Check game over
+    if(this.gameIsOver === false){
+       window.requestAnimationFrame(loop);
+
+           //Chaning Score in screen
+            let scoreID = document.querySelector(".counter")
+            scoreID.textContent = this.score
+
+    }else if (this.gameIsOver===true){
+        buildGameOver()
+        //Changin high score
+        const highest = myStorage.getItem("score");
+        const result = Math.max(highest, this.score)
+        myStorage.setItem("score", String(result))
+        console.log("myStorage", myStorage)
+
+        
+
+            let finalScoreID = document.querySelector(".final-score")
+            let highestScoreID = document.querySelector(".high-score")
+    
+            highestScoreID.textContent = result;
+            finalScoreID.textContent = this.score
+
+
+    }
+
     //Clear every frame
     //this.ctx.fillStyle = 'rga(0, 0, 0, 0.1)'
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -112,7 +144,7 @@ class Game {
         projectile.update()
         projectile.draw()    
 
-        //Removing proectiles that go out the screen
+        //Removing projectiles that go out the screen
         if(projectile.x + projectile.radius < 0 ||
             projectile.x - projectile.radius > this.canvas.width ||
             projectile.y + projectile.radius < 0 ||
@@ -127,7 +159,10 @@ class Game {
         enemy.draw()
         const dist = Math.hypot(this.player.x - enemy.x, this.player.y - enemy.y)
 
+        //Check collision with player
         if(dist -enemy.radius - this.player.size < 1){
+            this.lives -=1
+            console.log(this.lives)
             this.gameIsOver = true
         
         }
@@ -136,14 +171,19 @@ class Game {
             const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
 
             //When projectiles remove enemies
-            if(dist -enemy.radius - projectile.radius < 1){
+            if(dist - enemy.radius - projectile.radius < 1){
                 //If enemies are too big, shrink them instead of killing them
                 if(enemy.radius -10 > 10){
                     enemy.radius -= 10
+                    
+                    this.score +=5
+                    console.log(this.score)
                     setTimeout(()=>{
                         this.projectiles.splice(projectileIndex, 1)
                        },0)
                 }else{
+                    this.score +=10
+                    console.log(this.score)
                     setTimeout(()=>{
                         this.enemies.splice(enemyindex, 1)
                         this.projectiles.splice(projectileIndex, 1)

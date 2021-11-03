@@ -19,8 +19,12 @@ class Player{
         this.ctx.save();
         this.ctx.translate(this.x, this.y);
         this.ctx.rotate(this.r);
-        this.ctx.fillStyle = "#ffffff";
-        this.ctx.fillRect( -this.size/2, -this.size/2, this.size, this.size); 
+        this.ctx.shadowColor = 'white';
+        this.ctx.shadowBlur = 10;
+        this.ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+        this.ctx.fillRect( -this.size/2, -this.size/2, this.size, this.size);
+        this.ctx.strokeStyle = 'white';
+        this.ctx.strokeRect(-this.size/2, -this.size/2, 35, this.size);               
         this.ctx.restore();
     }
   
@@ -75,7 +79,8 @@ class Player{
         if(this.x < 0) this.x = this.canvas.width
         if( this.x > this.canvas.width) { this.x = 0}
         if(this.y  < 0) this.y = this.canvas.height
-        if( this.y > this.canvas.height) { this.y = 0}        }   
+        if( this.y > this.canvas.height) { this.y = 0}        
+    }   
 }
 
    
