@@ -14,13 +14,10 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid red;
+  
 
 }
 
-.outer{
-    border-color: 2px solid red;
-}
 
 canvas{
     border: 3px solid white;
