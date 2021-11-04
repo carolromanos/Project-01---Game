@@ -173,16 +173,6 @@ canvas{
     font-family: 'Monoton';
     font-size: 4em;
     color: rgb(156, 55, 55);
-/*     text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px rgb(180, 41, 41),
-    0 0 82px rgb(180, 41, 41),
-    0 0 92px rgb(180, 41, 41),
-    0 0 102px rgb(180, 41, 41),
-    0 0 151px rgb(180, 41, 41); */
-
     border: 0.2rem solid #fff;
     border-radius: 1rem;
     padding: 1em;
@@ -195,19 +185,20 @@ canvas{
 
 }
 p{
-    margin: 2px; 
+    margin-top: 20px; 
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Roboto';
 }
 .user-score{
     color: rgb(255, 255, 255);
-    text-align: center;
-    font-family: 'Roboto';
     font-size: 2em;
+   
    
 }
 .highest-score{
     color: rgb(156, 55, 55);
-    text-align: center;
-    font-family: 'Roboto';
+    font-size: 1.5em;
     
 }
 

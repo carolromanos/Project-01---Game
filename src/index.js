@@ -58,8 +58,9 @@
             buildDom(`
                 <section class="game-over">
                     <h1 class = "neon-text-2">Game Over</h1>
-                    <div><p><span id ="results" class="user-score" >Your Score: <span class="final-score">0</span></p></span></div> </div> 
-                    <div><p><span id ="results" class="highest-score" >Highest Score: <span class="high-score">0</span></p></span></div> </div> 
+                    <div>
+                      <p><span id ="results" class="user-score" >Score: <span class="final-score">0</span></p></span>
+                      <p><span id ="results" class="highest-score" >Highest Score: <span class="high-score">0</span></p></span></div> 
                     <button id="start-button">
                     <span></span>
                     <span></span>
