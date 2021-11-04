@@ -9,7 +9,29 @@
         const buildSplashScreen = () => {
             buildDom(`
               <h1 class = "neon-text-1">Enraged Square</h1>
-              <br />
+              <table>
+                  <tr>
+                  <th colspan = "2" id="table-text"><b> Intructions </b> </th>
+
+                  </tr>
+
+                  <tr>
+                    <td id="table-text"><b>Move </b></td>
+                    <td> W  |  A |  D</td>
+   
+                  </tr>
+                  <tr>
+                    <td id="table-text"><b>Point</b></td>
+                    <td>Cursor</td>
+                  </tr>
+                  <tr>
+                    <td id="table-text"><b>Shoot</b></td>
+                    <td>CLICK!</td>
+                  </tr>
+                <table>
+
+
+
               <button id="start-button">
                 <span></span>
                 <span></span>

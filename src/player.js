@@ -24,7 +24,8 @@ class Player{
         this.ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
         this.ctx.fillRect( -this.size/2, -this.size/2, this.size, this.size);
         this.ctx.strokeStyle = 'white';
-        this.ctx.strokeRect(-this.size/2, -this.size/2, 35, this.size);               
+        this.ctx.strokeRect(-this.size/2, -this.size/2, 35, this.size); 
+        this.ctx.strokeRect(-this.size/2, -this.size/2, 35, this.size);                  
         this.ctx.restore();
     }
   

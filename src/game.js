@@ -53,8 +53,8 @@ class Game {
         const angle = Math.atan2(event.clientY - this.player.y-this.canvas_y, event.clientX - this.player.x-this.canvas_x)
        
         const speed = {
-            x: Math.cos(angle)*5,
-            y: Math.sin(angle)*5
+            x: Math.cos(angle)*6,
+            y: Math.sin(angle)*6
         }
     
         this.projectiles.push(new Projectile (
@@ -173,11 +173,13 @@ class Game {
             this.enemies.splice(enemyindex, 1)
             
             if(this.lives > 1){
+            new Audio('./audio/player-hit4.mp3').play();
             this.lives -=1
             this.removeLives()
 
 
             } else{
+                new Audio('./audio/game-over.mp3').play();
                 this.gameIsOver = true
             }
             
@@ -199,11 +201,13 @@ class Game {
                     enemy.radius -= 10
                     
                     this.score +=5
+
                     
                     setTimeout(()=>{
                         this.projectiles.splice(projectileIndex, 1)
                        },0)
                 }else{
+                    new Audio('./audio/enemy-death.mp3').play();
                     this.score +=10
               
                     setTimeout(()=>{

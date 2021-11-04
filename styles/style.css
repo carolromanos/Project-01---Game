@@ -18,57 +18,14 @@ body{
 
 }
 
-
-canvas{
-    border: 3px solid white;
-    border-radius: 4px;
-    margin-top: 10px;
-    
-}
-
-#game-board{
-
-    margin-top: 60px;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-
-}
-
-.score-live{
-    color: white;
-    font-family: 'Roboto';
-    font-size: 2em;
-
-}
-
-.live{
-    margin-bottom: -4px;
-    width: 30px;
-    height: 30px;
-    padding-left: 5px;
-}
 .neon-text-1{
     margin-top: 100px;
     font-family: 'Monoton';
     font-size: 4em;
     color: rgb(156, 55, 55);
-/*  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff; */
-/*     0 0 42px rgb(180, 41, 41),
-    0 0 82px rgb(180, 41, 41),
-    0 0 92px rgb(180, 41, 41),
-    0 0 102px rgb(180, 41, 41),
-    0 0 151px rgb(180, 41, 41);  */
-
     border: 0.2rem solid #fff;
-    border-radius: 1rem;
-    padding: 1em;
+    border-radius: 0.7rem;
+    padding: 0.8em 0.8em;
     box-shadow: 0 0 .2rem #fff,
               0 0 .2rem #fff,
               0 0 2rem #fff,
@@ -79,13 +36,40 @@ canvas{
 
 }
 
+table {
+    margin-top: 50px;
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    font-family: 'Roboto';
+    font-size: 1em;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+  }
+#table-text{
+    color: rgb(156, 55, 55);
+}
+
+th{
+    font-size: 1.3em;
+    border-collapse: collapse;
+    border-radius: 0.2em;
+    
+}
+  td, th {
+    border: 1px solid rgb(190,190,190);
+    border-bottom: 2px solid white; 
+    padding: 10px 10px;
+
+  }
+
+
 #start-button{ 
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 24px;
     cursor: pointer;
     position: relative;  
-    margin-top: 70px;
+    margin-top: 50px;
     padding: 15px 30px; 
     overflow: hidden; 
     transition: 0.2s all;  
@@ -158,6 +142,41 @@ canvas{
     transition-delay: 0.75s;
 }
 
+
+canvas{
+    border: 3px solid white;
+    border-radius: 4px;
+    margin-top: 10px;
+    
+}
+
+#game-board{
+
+    margin-top: 60px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.score-live{
+    color: white;
+    font-family: 'Roboto';
+    font-size: 2em;
+
+}
+
+.live{
+    margin-bottom: -4px;
+    width: 30px;
+    height: 30px;
+    padding-left: 5px;
+}
+
+
 .game-over{
     display: flex;
     justify-content: center;
@@ -171,8 +190,8 @@ canvas{
     font-size: 4em;
     color: rgb(156, 55, 55);
     border: 0.2rem solid #fff;
-    border-radius: 1rem;
-    padding: 1em;
+    border-radius: 0.7rem;
+    padding: 0.8em 0.8em;
     box-shadow: 0 0 .2rem #fff,
               0 0 .2rem #fff,
               0 0 2rem rgb(141, 32, 32),
