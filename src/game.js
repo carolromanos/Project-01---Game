@@ -91,7 +91,6 @@ class Game {
        
     }, 900)
 
-
     this.startLoop();
 
    
@@ -122,27 +121,26 @@ class Game {
     if(this.gameIsOver === false){
        
         window.requestAnimationFrame(loop);
-
+        
            //Changing Score in screen
             let scoreID = document.querySelector(".counter")
             scoreID.textContent = this.score
 
     }else if (this.gameIsOver===true){
-        
+  
         buildGameOver()
-
-        //Storing highest score and rendering it in DOM
-        const highest = myStorage.getItem("score");
-        const result = Math.max(highest, this.score)
-        
-        myStorage.setItem("score", String(result))
-       
-        let finalScoreID = document.querySelector(".final-score")
-        let highestScoreID = document.querySelector(".high-score")
-    
-        highestScoreID.textContent = result;
-        finalScoreID.textContent = this.score 
-        console.log(highest)
+         //Storing highest score and rendering it in DOM
+         const highest = myStorage.getItem("score");
+         const result = Math.max(highest, this.score)
+         
+         myStorage.setItem("score", String(result))
+     
+         let finalScoreID = document.querySelector(".final-score")
+         let highestScoreID = document.querySelector(".high-score")
+         console.log(this.score)
+         highestScoreID.textContent = result;
+         finalScoreID.textContent = this.score 
+                
      
 
     }
@@ -190,12 +188,9 @@ class Game {
                 this.lives -=1
                 this.removeLives() 
 
-
-                
-
             } else{
                 new Audio('./audio/game-over.mp3').play();
-                //this.gameIsOver = true
+                this.gameIsOver = true
             }
         
         }
