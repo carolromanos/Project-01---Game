@@ -100,7 +100,7 @@ class Game {
   removeLives(){
     // remove each live element
     const parent = document.querySelector('.lives-screen');
-    console.log(parent)
+    
     const firstChild = document.querySelectorAll(".live")
    
     parent.removeChild(firstChild[0])
@@ -126,7 +126,7 @@ class Game {
         const highest = myStorage.getItem("score");
         const result = Math.max(highest, this.score)
         myStorage.setItem("score", String(result))
-        console.log("myStorage", myStorage)
+       
 
         let finalScoreID = document.querySelector(".final-score")
         let highestScoreID = document.querySelector(".high-score")
@@ -178,7 +178,7 @@ class Game {
 
 
             } else{
-                //this.gameIsOver = true
+                this.gameIsOver = true
             }
             
             //Game over when players runs out of lives
@@ -199,13 +199,13 @@ class Game {
                     enemy.radius -= 10
                     
                     this.score +=5
-                    console.log(this.score)
+                    
                     setTimeout(()=>{
                         this.projectiles.splice(projectileIndex, 1)
                        },0)
                 }else{
                     this.score +=10
-                    console.log(this.score)
+              
                     setTimeout(()=>{
                         this.enemies.splice(enemyindex, 1)
                         this.projectiles.splice(projectileIndex, 1)

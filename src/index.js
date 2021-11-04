@@ -35,9 +35,9 @@
                 
               </div> 
               <div class="lives-screen">
-                <img class ="live" src="/images/live.png" alt="Live Icon">
-                <img class ="live" src="/images/live.png" alt="Live Icon">
-                <img class ="live" src="/images/live.png" alt="Live Icon">
+                <img class ="live" src="images/live.png" alt="Live Icon">
+                <img class ="live" src="images/live.png" alt="Live Icon">
+                <img class ="live" src="images/live.png" alt="Live Icon">
               </div>
             </div> 
 
@@ -58,9 +58,15 @@
             buildDom(`
                 <section class="game-over">
                     <h1 class = "neon-text-2">Game Over</h1>
-                    <div><p><span id ="results" >Your Score: </span><span class="final-score">0</span></p></div> </div> 
-                    <div><p><span id ="results" >Highest Score: </span><span class="high-score">0</span></p></div> </div> 
-                    <button id = "game"> TRY AGAIN</button>
+                    <div><p><span id ="results" class="user-score" >Your Score: <span class="final-score">0</span></p></span></div> </div> 
+                    <div><p><span id ="results" class="highest-score" >Highest Score: <span class="high-score">0</span></p></span></div> </div> 
+                    <button id="start-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Try Again
+                  </button>
                     <div class= "pointer"> </div>
                 </section>
             `);

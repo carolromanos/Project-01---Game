@@ -194,15 +194,22 @@ canvas{
               inset 0 0 1.3rem rgb(141, 32, 32)  
 
 }
-
-#results{
-    color: white;
+p{
+    margin: 2px; 
+}
+.user-score{
+    color: rgb(255, 255, 255);
     text-align: center;
+    font-family: 'Roboto';
+    font-size: 2em;
+   
+}
+.highest-score{
+    color: rgb(156, 55, 55);
+    text-align: center;
+    font-family: 'Roboto';
+    
 }
 
-.final-score{
-    color: white;
-}
-.high-score{
-    color: white;
-}
+
+
