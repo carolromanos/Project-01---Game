@@ -168,6 +168,15 @@ canvas{
     font-size: 2em;
 
 }
+.highest-score-game{
+    display: block;
+    margin: auto;
+    font-family: 'Roboto';
+    margin-top: 20px;
+    color: rgb(156, 55, 55);
+    font-size: 1.5em;
+    
+}
 
 .live{
     margin-bottom: -4px;
@@ -217,6 +226,8 @@ p{
     font-size: 1.5em;
     
 }
+
+
 
 
 

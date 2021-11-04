@@ -1,4 +1,3 @@
-"use strict";
 
 const myStorage = window.localStorage;
 
@@ -44,8 +43,9 @@ class Game {
       }; 
     document.body.addEventListener("keydown", this.handleKeyDown);
     document.body.addEventListener("keyup", this.handleKeyUp);
- 
-
+      
+    //Music
+    new Audio('./audio/background-audio2.mp3').play();
     
     // SHOOTING PROJECTILES
     this.canvas.addEventListener("click", (event) =>{
@@ -98,46 +98,56 @@ class Game {
   }
 
   removeLives(){
-    // remove each live element
+    // remove each live from top of the board
     const parent = document.querySelector('.lives-screen');
-    
     const firstChild = document.querySelectorAll(".live")
-   
     parent.removeChild(firstChild[0])
-}
+  }
+
+  removeLivesText(){
+      setTimeout(()=>{
+        this.ctx.font = "30px Arial";
+        this.ctx.fillStyle = "white"
+        this.ctx.fillText("-1 Live", this.player.x +40, this.player.y -40);
+      }, 200)
+
+  }
+
 
 
   startLoop() {
     const loop = () => {
-
-    //Check game over
+       
+    //Check if game is over
     if(this.gameIsOver === false){
        
         window.requestAnimationFrame(loop);
 
-           //Chaning Score in screen
+           //Changing Score in screen
             let scoreID = document.querySelector(".counter")
             scoreID.textContent = this.score
 
     }else if (this.gameIsOver===true){
         
         buildGameOver()
+
         //Storing highest score and rendering it in DOM
         const highest = myStorage.getItem("score");
         const result = Math.max(highest, this.score)
+        
         myStorage.setItem("score", String(result))
        
-
         let finalScoreID = document.querySelector(".final-score")
         let highestScoreID = document.querySelector(".high-score")
     
         highestScoreID.textContent = result;
-        finalScoreID.textContent = this.score
+        finalScoreID.textContent = this.score 
+        console.log(highest)
+     
 
     }
 
     //Clear every frame
-    //this.ctx.fillStyle = 'rga(0, 0, 0, 0.1)'
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
     //CREATE PLAYER
@@ -160,7 +170,6 @@ class Game {
       
     })
 
-
    
     //ENEMIES ANIMATION
     this.enemies.forEach ((enemy, enemyindex) =>{
@@ -168,23 +177,24 @@ class Game {
         enemy.draw()
         const dist = Math.hypot(this.player.x - enemy.x, this.player.y - enemy.y)
 
-        //Check collision with player
+        //Check collision between enemies and player
         if(dist -enemy.radius - this.player.size < 1){
+
+            //Removing enemies from enemies array
             this.enemies.splice(enemyindex, 1)
             
+                this.removeLivesText()
+          
             if(this.lives > 1){
-            new Audio('./audio/player-hit4.mp3').play();
-            this.lives -=1
-            this.removeLives()
+                new Audio('./audio/player-hit4.mp3').play();
+                this.lives -=1
+                this.removeLives() 
 
+
+                
 
             } else{
                 new Audio('./audio/game-over.mp3').play();
-                this.gameIsOver = true
-            }
-            
-            //Game over when players runs out of lives
-            if(this.lives === 0){
                 //this.gameIsOver = true
             }
         
@@ -192,9 +202,11 @@ class Game {
 
         //Check Collision between enemies and prjectiles
         this.projectiles.forEach((projectile, projectileIndex)=>{
+            
+            //For each projectile check the distance with enemies
             const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
 
-            //When projectiles remove enemies
+            //When projectiles touch enemies
             if(dist - enemy.radius - projectile.radius < 1){
                 //If enemies are too big, shrink them instead of killing them
                 if(enemy.radius -10 > 10){
@@ -204,16 +216,16 @@ class Game {
 
                     
                     setTimeout(()=>{
-                        this.projectiles.splice(projectileIndex, 1)
-                       },0)
+                    this.projectiles.splice(projectileIndex, 1)
+                    },0)
                 }else{
-                    new Audio('./audio/enemy-death.mp3').play();
+                    new Audio('./audio/enemy-hit2.mp3').play();
                     this.score +=10
               
                     setTimeout(()=>{
                         this.enemies.splice(enemyindex, 1)
                         this.projectiles.splice(projectileIndex, 1)
-                       },0)
+                     },0)
                 }            
             }
         })

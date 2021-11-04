@@ -30,8 +30,6 @@
                   </tr>
                 <table>
 
-
-
               <button id="start-button">
                 <span></span>
                 <span></span>
