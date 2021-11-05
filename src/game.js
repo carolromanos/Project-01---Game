@@ -184,7 +184,7 @@ class Game {
                 this.removeLivesText()
           
             if(this.lives > 1){
-                new Audio('./audio/player-hit4.mp3').play();
+                new Audio('./audio/player-hit.mp3').play();
                 this.lives -=1
                 this.removeLives() 
 
@@ -216,7 +216,7 @@ class Game {
                     this.projectiles.splice(projectileIndex, 1)
                     },0)
                 }else{
-                    new Audio('./audio/enemy-hit2.mp3').play();
+                    new Audio('./audio/enemy-death.mp3').play();
                     this.score +=10
               
                     setTimeout(()=>{
