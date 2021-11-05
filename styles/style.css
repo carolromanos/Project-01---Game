@@ -4,6 +4,7 @@
 body{
     margin: 0;
     background-color: black;
+   
 
 }
 
@@ -14,7 +15,8 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  
+
+      
 
 }
 
