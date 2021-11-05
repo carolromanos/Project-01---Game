@@ -1,5 +1,7 @@
 
     // General function that will update the HTML content dynamically
+    let backgroundMusic = new Audio('./audio/background-audio2.mp3')
+
     const buildDom = (html) => {
         const main = document.querySelector("main");
         main.innerHTML = html;
@@ -71,6 +73,10 @@
     
         const game = new Game();
         game.start()
+          //Music
+
+          backgroundMusic.play();
+    
       }
     
         // Third Screen => Game Over
@@ -92,8 +98,10 @@
                 </section>
             `);
 
+            //Ending background music
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
 
-        
             const restartButton = document.querySelector("button");
             restartButton.addEventListener("click",buildGameScreen);
         };

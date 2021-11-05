@@ -44,9 +44,7 @@ class Game {
     document.body.addEventListener("keydown", this.handleKeyDown);
     document.body.addEventListener("keyup", this.handleKeyUp);
       
-    //Music
-    new Audio('./audio/background-audio2.mp3').play();
-    
+  
     // SHOOTING PROJECTILES
     this.canvas.addEventListener("click", (event) =>{
    
@@ -127,8 +125,10 @@ class Game {
             scoreID.textContent = this.score
 
     }else if (this.gameIsOver===true){
-  
+        
+      
         buildGameOver()
+        
          //Storing highest score and rendering it in DOM
          const highest = myStorage.getItem("score");
          const result = Math.max(highest, this.score)
@@ -189,8 +189,10 @@ class Game {
                 this.removeLives() 
 
             } else{
+        
                 new Audio('./audio/game-over.mp3').play();
                 this.gameIsOver = true
+  
             }
         
         }
