@@ -10,7 +10,7 @@
         // First Screen => Splash Screen
         const buildSplashScreen = () => {
             buildDom(`
-              <h1 class = "neon-text-1">Enraged Square</h1>
+              <h1 class = "neon-text-1">Squared Madness</h1>
               <table>
                   <tr>
                   <th colspan = "2" id="table-text"><b> Intructions </b> </th>

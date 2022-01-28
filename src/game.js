@@ -126,23 +126,22 @@ class Game {
 
     }else if (this.gameIsOver===true){
         
-      
-        buildGameOver()
-        
-         //Storing highest score and rendering it in DOM
-         const highest = myStorage.getItem("score");
-         const result = Math.max(highest, this.score)
-         
-         myStorage.setItem("score", String(result))
-     
-         let finalScoreID = document.querySelector(".final-score")
-         let highestScoreID = document.querySelector(".high-score")
-         console.log(this.score)
-         highestScoreID.textContent = result;
-         finalScoreID.textContent = this.score 
-                
-     
 
+        buildGameOver()
+                //Storing highest score and rendering it in DOM
+                const highest = myStorage.getItem("score");
+                const result = Math.max(highest, this.score)
+                
+                myStorage.setItem("score", String(result))
+            
+                let finalScoreID = document.querySelector(".final-score")
+                let highestScoreID = document.querySelector(".high-score")
+       
+                highestScoreID.textContent = result;
+                finalScoreID.textContent = this.score 
+  
+                
+     console.log(result);
     }
 
     //Clear every frame

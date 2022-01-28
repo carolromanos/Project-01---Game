@@ -19,5 +19,6 @@ class Enemy {
         this.x = this.x + this.speed.x
         this.y = this.y + this.speed.y
     }
+    
 
 }
