@@ -74,7 +74,6 @@
         const game = new Game();
         game.start()
           //Music
-
           backgroundMusic.play();
     
       }
